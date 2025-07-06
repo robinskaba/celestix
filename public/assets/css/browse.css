@@ -1,0 +1,78 @@
+main {
+    margin-top: 6.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 5em;
+}
+
+h1 {
+    font-size: 250%;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    width: 100%;
+    padding: 0;
+    margin: 1em 0 0 0;
+}
+
+ul a {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+    height: 15em;
+    gap: 0.5em;
+
+    text-decoration: none;
+    overflow: hidden;
+}
+
+ul a:hover {
+    background-color: rgb(29, 29, 29);
+}
+
+ul a h2 {
+    font-size: 200%;
+}
+
+ul a span {
+    font-size: 75%;
+}
+
+ul a h2, ul a p {
+    margin: 0;
+}
+
+ul a div {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1em;
+}
+
+ul a div:last-of-type {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+ul a div p {
+    flex: 1;
+    font-size: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ul a div img {
+    flex: 0 0 auto;
+    max-height: 100%;
+    max-width: 50%;
+    object-fit: contain;
+}

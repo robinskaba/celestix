@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Kapakana:wght@300..400&display=swap');
+
+/* CROSS SITE */
+
+:root {
+    --primary-font-family: "Cinzel";
+    --border: solid 1px white;
+    --border-radius: 0.25em;
+}
+
+* {
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    margin: 0;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, li {
+    font-family: var(--primary-font-family);
+    font-weight: 100;
+}
+
+.btn {
+    background-color: black;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    padding: 0.5em 1em;
+}
+.btn:hover {
+    background-color: white;
+    color: black;
+    transition: 400ms;
+    cursor: pointer;
+}
+
+h1 {
+    margin: 0;
+}
+
+.hidden {
+    display: none !important;
+}

@@ -1,0 +1,61 @@
+main {
+    margin-top: 6.5em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    padding: 2.5em 0;
+}
+
+main > h1 {
+    font-size: 300%;
+}
+
+form a {
+    text-decoration: none;
+    font-size: 75%;
+    color: gray;
+}
+form a:hover {
+    color: white;
+}
+
+form {
+    border: white solid 1px;
+    border-radius: var(--border-radius);
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+    padding: 1.25em;
+    align-items: center;
+}
+
+input {
+    background-color: black;
+    border: solid white 1px;
+    border-radius: var(--border-radius);
+    padding: 0.5em;
+    margin-top: 0.5em;
+}
+
+form * {
+    width: 100%;
+}
+
+form button {
+    font-size: 110%;
+}
+
+.errors {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+}
+
+.errors span {
+    color: red;
+    font-size: 75%;
+    margin: 0;
+}

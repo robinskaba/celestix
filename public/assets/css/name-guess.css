@@ -1,0 +1,81 @@
+main {
+    margin-top: 6.5em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15%;
+}
+
+main > div {
+    margin: 2em 0 1em 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+main > div span {
+    font-size: 150%;
+    width: 20%;
+    text-align: center;
+}
+
+#guess-form input, #guess-form button, #all-constellations, li.constellation {
+    border: var(--border);
+    border-radius: var(--border-radius);
+}
+
+#guess-form input, #guess-form button {
+    background-color: black;
+    color: white;
+    font-size: 125%;
+    padding: 0.5em;
+}
+
+#guess-form input {
+    width: 20em;
+}
+
+#guess-form input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#guess-form input.incorrect, #guess-form button.incorrect {
+    border-color: red;
+    color: red;
+}
+
+#guess-form button:hover {
+    background-color: white;
+    color: black;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+#all-constellations {
+    display: grid;  
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(22, 1fr);
+    grid-auto-flow: column;
+
+    gap: 0.5em;
+    padding: 0.5em;
+    margin: 0;
+    justify-items: start;
+    align-items: start;
+    width: 100%;
+}
+
+li.constellation {
+    list-style-type: none;
+    width: 100%;
+    justify-self: stretch;
+    padding: 0.25em 0.4em;
+}
+
+li.correct, #guess-form input.correct, #guess-form button.correct {
+    border-color: lime;
+    color: lime;
+}

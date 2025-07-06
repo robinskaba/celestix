@@ -1,0 +1,41 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    padding: 2em;
+    gap: 0.5em;
+}
+
+#links {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+#links div {
+    display: flex;
+    align-items: center;    
+    gap: 0.3em;
+}
+
+footer img {
+    width: 1.25em;
+    height: fit-content;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+/* putting footer at the bottom of the page */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}

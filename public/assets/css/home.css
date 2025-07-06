@@ -1,0 +1,19 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20%;
+    gap: 1em;
+
+    background: url("../img/earth-background.png") no-repeat center center;
+    background-size: contain;
+
+    aspect-ratio: 16 / 9;
+}
+
+main h1 {
+    font-family: var(--primary-font-family);
+    font-weight: 100;
+    font-size: 400%;
+}

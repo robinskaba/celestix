@@ -1,0 +1,82 @@
+main {
+    margin-top: 6.5em;
+    display: flex;
+    padding: 2em 10em;
+    gap: 1em;
+}
+
+.vflex {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 50%;
+}
+
+#info, #actions, #stats, .stat {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    width: 100%;
+    padding: 1em;
+}
+
+#info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    height: 100%;
+}
+
+#info img {
+    height: 10em;
+    object-fit: contain;
+}
+
+#actions {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+
+    align-content: start;
+    align-items: start;
+}
+
+#stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+
+    align-content: start;
+    align-items: start;
+}
+
+#actions a {
+    text-align: center;
+}
+
+.stat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 7em;
+    padding: 1em;
+    gap: 0.5em;
+}
+
+.stat h2 {
+    margin: 0;
+    font-size: 90%;
+    text-align: center;
+}
+
+.stat span {
+    font-size: 200%;
+}
+
+#stats > div > div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
