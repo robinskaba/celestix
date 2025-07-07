@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title><?= htmlspecialchars($title) ?? 'Stellara' ?></title>
+        <title><?= htmlspecialchars($title) ?? 'Celestix' ?></title>
 
         <?php foreach ($css ?? [] as $href): ?>
             <link rel="stylesheet" href="<?= $href ?>">

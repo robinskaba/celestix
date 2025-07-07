@@ -7,7 +7,7 @@ class SkyGuessController {
 
     // sky guess page
     public function skyGuessPage() {
-        $title = 'Sky Guess | Stellara';
+        $title = 'Sky Guess | Celestix';
         $view = 'sky-guess';
         $css = ['/assets/css/sky-guess.css'];
         $scripts = [

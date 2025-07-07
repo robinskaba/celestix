@@ -2,7 +2,7 @@
 
 class PageController {
     public function home() {
-        $title = 'Stellara';
+        $title = 'Celestix';
         $view = 'home';
         $css = ['/assets/css/home.css'];
         $scripts = [
@@ -13,7 +13,7 @@ class PageController {
     }
 
     public function not_found() {
-        $title = 'Page not found | Stellara';
+        $title = 'Page not found | Celestix';
         $view = 'not-found';
         $css = ['/assets/css/constellation.css'];
         $scripts = [

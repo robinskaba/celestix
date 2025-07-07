@@ -7,7 +7,7 @@ use app\util\FormValidator;
 
 class UserController {
     public function login() {
-        $title = 'Login | Stellara';
+        $title = 'Login | Celestix';
         $view = 'login';
         $css = ['/assets/css/form.css'];
         $scripts = [];
@@ -35,7 +35,7 @@ class UserController {
     }
 
     public function register() {
-        $title = 'Register | Stellara';
+        $title = 'Register | Celestix';
         $view = 'register';
         $css = ['/assets/css/form.css'];
         $scripts = [];
@@ -121,7 +121,7 @@ class UserController {
     }
 
     public function change_password() {
-        $title = 'Change password | Stellara';
+        $title = 'Change password | Celestix';
         $view = 'change-password';
         $css = ['/assets/css/form.css'];
         $scripts = [
@@ -171,7 +171,7 @@ class UserController {
             exit;
         }
 
-        $title = $targetUsername."'s Profile | Stellara";
+        $title = $targetUsername."'s Profile | Celestix";
         $view = 'profile';
         $css = ['/assets/css/profile.css'];
         $scripts = [

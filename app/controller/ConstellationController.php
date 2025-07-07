@@ -32,7 +32,7 @@ class ConstellationController {
 
 
     public function sky_guess() {
-        $title = 'Guess the constellation | Stellara';
+        $title = 'Guess the constellation | Celestix';
         $view = 'sky-guess';
         $css = ['/assets/css/sky-guess.css'];
         $scripts = [
@@ -42,7 +42,7 @@ class ConstellationController {
     }
 
     public function name_guess() {
-        $title = 'Name Guess | Stellara';
+        $title = 'Name Guess | Celestix';
         $view = 'name-guess';
         $css = ['/assets/css/name-guess.css'];
         $scripts = [
@@ -56,7 +56,7 @@ class ConstellationController {
     }
 
     public function browse() {
-        $title = 'Constellations | Stellara';
+        $title = 'Constellations | Celestix';
         $view = 'browse';
         $css = ['/assets/css/browse.css'];
         $scripts = [];
@@ -77,7 +77,7 @@ class ConstellationController {
             exit;
         }
 
-        $title = "{$objConst->name} | Stellara";
+        $title = "{$objConst->name} | Celestix";
         $view = 'constellation';
         $css = ['/assets/css/constellation.css'];
         $scripts = [];
