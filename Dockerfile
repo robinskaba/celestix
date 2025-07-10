@@ -5,10 +5,10 @@ RUN apt-get update && apt-get install -y libpq-dev && \
 
 RUN a2enmod rewrite headers
 
-# COPY ./app /var/www/html/app
-# COPY ./core /var/www/html/core
-# COPY ./config /var/www/html/config
-# COPY ./public /var/www/html/public
+COPY ./app /var/www/html/app
+COPY ./core /var/www/html/core
+COPY ./config /var/www/html/config
+COPY ./public /var/www/html/public
 
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
 
