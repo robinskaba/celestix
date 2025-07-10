@@ -1,6 +1,11 @@
 services:
   webserver:
     build: .
+    volumes:
+    - ./public:/var/www/html/public
+    - ./app:/var/www/html/app
+    - ./core:/var/www/html/core
+    - ./config:/var/www/html/config
     ports:
       - "8000:80"
     environment:
