@@ -1,4 +1,5 @@
 sql/*.backup
+db-init/
 devtools/
 .env
 working-files/
