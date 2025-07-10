@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "../util/form_errors.php";
+require __DIR__ . '/util/form_errors.php';
 
 ?>
 

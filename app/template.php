@@ -1,3 +1,12 @@
+<?php
+
+use app\service\SessionService;
+
+$loggedIn = SessionService::isLoggedIn();
+$username = $loggedIn ? SessionService::getUser()->username : "";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>

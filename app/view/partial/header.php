@@ -1,8 +1,4 @@
-<?php
-
-use app\service\SessionService;
-
-?>
+<!-- php variables from template.php -->
 
 <header>
     <nav>
@@ -15,8 +11,8 @@ use app\service\SessionService;
             </div>
         </div>
         <div class="page-links">
-            <?php if (SessionService::isLoggedIn()): ?>
-                <a href=<?= "/profile?username=".htmlspecialchars(SessionService::getUser()->username) ?>>Profile</a>
+            <?php if ($loggedIn): ?>
+                <a href=<?= "/profile?username=".htmlspecialchars($username) ?>>Profile</a>
                 <a href="/log-out">Log out</a>
             <?php else: ?>
                 <a href="/login">Login</a>
