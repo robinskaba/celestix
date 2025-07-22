@@ -1,5 +1,7 @@
 <?php
 
+namespace app\controller;
+
 use app\service\PictureService;
 
 class ResourceController {

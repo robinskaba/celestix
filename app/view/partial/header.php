@@ -1,13 +1,11 @@
-<!-- php variables from template.php -->
-
 <header>
     <nav>
         <div>
             <a href="/" id="page-title">Celestix</a>
             <div class="page-links">
-                <a href="/sky-guess">SKY GUESSING</a>
-                <a href="/name-guess">ALL NAMES GUESSING</a>
-                <a href="/browse">Browse constellations</a>
+                <a href="/sky-guess">Sky Guess</a>
+                <a href="/name-guess">Name Guess</a>
+                <a href="/browse">Browse</a>
             </div>
         </div>
         <div class="page-links">

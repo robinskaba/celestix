@@ -3,6 +3,7 @@
 namespace app\util;
 
 class PasswordValidator {
+    
     public static function validatePassword(string $password): array {
         $errors = [];
 
@@ -25,4 +26,5 @@ class PasswordValidator {
         }
         return [];
     }
+
 }

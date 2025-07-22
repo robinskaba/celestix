@@ -1,5 +1,7 @@
 <?php
 
+namespace app\controller;
+
 use app\service\ConstellationService;
 use app\service\SessionService;
 

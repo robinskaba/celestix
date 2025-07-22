@@ -12,8 +12,7 @@ class Router {
     public function dispatch() {
         $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-        // Odeber "public" prefix pokud existuje (přesun URL do kořene)
-        $base = ''; // uprav podle složky
+        $base = ''; // cause of /public .htaccess
         $url = str_starts_with($requestUri, $base) ? substr($requestUri, strlen($base)) : $requestUri;
         if ($url === '') $url = '/';
 

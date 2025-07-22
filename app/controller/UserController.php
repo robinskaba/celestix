@@ -1,11 +1,14 @@
 <?php
 
+namespace app\controller;
+
 use app\service\UserService;
 use app\service\SessionService;
 use app\util\PasswordValidator;
 use app\util\FormValidator;
 
 class UserController {
+    
     public function login() {
         $title = 'Login | Celestix';
         $view = 'login';
@@ -117,7 +120,7 @@ class UserController {
         require __DIR__ . '/../template.php';
     }
 
-    public function change_password() {
+    public function changePassword() {
         $title = 'Change password | Celestix';
         $view = 'change-password';
         $css = ['/assets/css/form.css'];

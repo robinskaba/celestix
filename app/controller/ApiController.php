@@ -1,5 +1,7 @@
 <?php
 
+namespace app\controller;
+
 use app\service\SessionService;
 use app\service\UserService;
 
@@ -11,7 +13,6 @@ class ApiController {
             exit;
         }
 
-        // Get raw POST data and decode JSON payload
         $input = file_get_contents('php://input');
         $data = json_decode($input, true);
 
@@ -40,4 +41,5 @@ class ApiController {
             exit;
         }
     }
+    
 }

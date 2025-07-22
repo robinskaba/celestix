@@ -12,7 +12,7 @@ class UserService {
     private UserDAO $userDAO;
 
     public function __construct() {
-        $this->userDAO = new UserDao();
+        $this->userDAO = new UserDAO();
         $this->pictureService = new PictureService();
     }
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace app\controller;
+
 use app\model\Constellation;
 use app\service\ConstellationService;
 use app\service\SessionService;
@@ -31,7 +33,7 @@ class ConstellationController {
     }
 
 
-    public function sky_guess() {
+    public function skyGuess() {
         $title = 'Guess the constellation | Celestix';
         $view = 'sky-guess';
         $css = ['/assets/css/sky-guess.css'];
@@ -41,7 +43,7 @@ class ConstellationController {
         require __DIR__ . '/../template.php';
     }
 
-    public function name_guess() {
+    public function nameGuess() {
         $title = 'Name Guess | Celestix';
         $view = 'name-guess';
         $css = ['/assets/css/name-guess.css'];
@@ -89,7 +91,7 @@ class ConstellationController {
 
     // API FOR JS
 
-    public function check_constellation_name() {
+    public function checkConstellationName() {
         header('Content-Type: application/json');
 
         $inputName = $_GET['input_name'] ?? '';
@@ -102,27 +104,11 @@ class ConstellationController {
         if ($objConst !== null) {
             echo json_encode([
                 'name' => $objConst->name,
-                'index' => $objConst->index
+                'index' => $objConst->index // position in the constellation order
             ]);
         } else {
             echo json_encode(null);
         }
         exit;
-    }
-
-    public function stat_game_initiated() {
-        $user = SessionService::getUser();
-        if ($user == null) return;
-
-        $userService = new UserService();
-        $userService->increaseStatTotal($user, "name-guess");
-    }
-
-    public function stat_game_completed() {
-        $user = SessionService::getUser();
-        if ($user == null) return;
-
-        $userService = new UserService();
-        $userService->increaseStatSuccess($user, "name-guess");
     }
 }
