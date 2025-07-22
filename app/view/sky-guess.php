@@ -1,7 +1,7 @@
 <div id="img-wrap">
     <span class="loader"></span>
-    <img id="clean-image" src="/assets/img/earth-background.png" alt="clean constellation image">
-    <img id="lines-image" src="/assets/img/earth-background.png" alt="constellation image with lines">
+    <img id="clean-image" class="hidden" alt="clean constellation image">
+    <img id="lines-image" class="hidden" alt="constellation image with lines">
 </div>
 
 <div id="solution-wrap" class="hidden">

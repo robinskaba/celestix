@@ -30,6 +30,7 @@ function requestStatIncrease(property) {
 
 function toggleSolution(solutionShown) {
     cleanImage.style.opacity = solutionShown ? 0 : 1;
+    linesImage.classList.toggle("hidden", !solutionShown);
     form.classList.toggle("hidden", solutionShown);
     solutionWrap.classList.toggle("hidden", !solutionShown);
 
@@ -42,7 +43,6 @@ function toggleSolution(solutionShown) {
 function showLoading(isLoading) {
     loader.classList.toggle("hidden", !isLoading);
     cleanImage.classList.toggle("hidden", isLoading);
-    linesImage.classList.toggle("hidden", isLoading);
 }
 
 function setFieldsToCurrent() {
@@ -61,16 +61,19 @@ function fetchPair() {
     xhr.open("GET", FETCH_PAIR_ENDPOINT, true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
+            let response;
+            try {
+                response = JSON.parse(xhr.responseText);
+            } catch (e) {
+                console.error("Failed to parse response:", xhr.responseText);
+                return;
+            }
 
             constellationName = response.name;
             clean = response.clean;
             lines = response.lines;
 
-            // console.log("HACK: "+constellationName);
-
             setFieldsToCurrent();
-            showLoading(false);
         }
     };
     xhr.send();
@@ -142,3 +145,6 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
+cleanImage.onload = () => {
+    showLoading(false);
+}
