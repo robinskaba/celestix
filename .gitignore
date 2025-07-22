@@ -3,3 +3,4 @@ devtools/
 working-files/
 */uploads/profile_imgs/*
 !*/uploads/profile_imgs/.gitkeep
+db/init.psql/
