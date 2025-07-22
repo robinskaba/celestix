@@ -30,14 +30,14 @@ class UserDAO extends BaseDAO {
             return null;
         }
 
-        $stmt = $this->db->prepare("SELECT id, username, email, profile_img, password_hash FROM site_user WHERE $field = ?");
+        $stmt = $this->db->prepare("SELECT id, username, email, profile_picture_id, password_hash FROM site_user WHERE $field = ?");
         $stmt->execute([$value]);
         $row = $stmt->fetch(\PDO::FETCH_ASSOC);
         if (!$row) return null;
 
         // fetch stats from Stat table
-        $stmt = $this->db->prepare("SELECT * FROM stat WHERE username = ?");
-        $stmt->execute([$row['username']]);
+        $stmt = $this->db->prepare("SELECT * FROM stat WHERE user_id = ?");
+        $stmt->execute([$row['id']]);
         $statsRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // build stats as a list of objects inside User
@@ -45,21 +45,23 @@ class UserDAO extends BaseDAO {
         foreach ($statsRows as $statRow) {
             $code = $statRow["str_code"];
             $actualName = $this->statsConfig[$code];
-            $stats[$code] = new Stat($code, $actualName, $statRow["success"], $statRow["total"], $statRow["username"]);
+            $stats[$code] = new Stat($code, $actualName, $statRow["success"], $statRow["total"], $statRow["user_id"]);
         }
 
-        return new User($row['username'], $row['email'], $row['profile_img'], $row["password_hash"], $stats);
+        return new User($row['id'], $row['username'], $row['email'], $row['profile_picture_id'], $row["password_hash"], $stats);
     }
 
-    public function create(string $username, string $email, ?string $profileImg, string $passwordHash) {
-        $stmt = $this->db->prepare("INSERT INTO site_user (username, email, password_hash, privilege, profile_img) VALUES (?, ?, ?, 'user', ?)");
-        $stmt->execute([$username, $email, $passwordHash, $profileImg]);
+    public function create(string $username, string $email, ?int $profilePictureId, string $passwordHash) {
+        $stmt = $this->db->prepare("INSERT INTO site_user (username, email, password_hash, privilege, profile_picture_id) VALUES (?, ?, ?, 'user', ?)");
+        $stmt->execute([$username, $email, $passwordHash, $profilePictureId]);
+
+        // get the newly created user's id
+        $userId = $this->db->lastInsertId();
 
         // initiate rows in stat db for the user
-        $stats = [];
         foreach ($this->statsConfig as $statConfig => $_) {
-            $stmt = $this->db->prepare("INSERT INTO stat (str_code, username) VALUES (?, ?)");
-            $stmt->execute([$statConfig, $username]);
+            $stmt = $this->db->prepare("INSERT INTO stat (str_code, user_id) VALUES (?, ?)");
+            $stmt->execute([$statConfig, $userId]);
         }
     }
 
@@ -67,18 +69,18 @@ class UserDAO extends BaseDAO {
         // only user properties - no stats
 
         $stmt = $this->db->prepare(
-            "UPDATE site_user SET email = ?, password_hash = ?, profile_img = ? WHERE username = ?"
+            "UPDATE site_user SET email = ?, password_hash = ?, profile_picture_id = ? WHERE user_id = ?"
         );
         return $stmt->execute([
             $user->email,
             $user->passwordHash,
-            $user->profileImg,
-            $user->username
+            $user->profilePictureId,
+            $user->id
         ]);
     }
 
     public function updateStat(Stat $stat) {
-        $stmt = $this->db->prepare("UPDATE stat SET success = ?, total = ? WHERE str_code = ? AND username = ?");
-        return $stmt->execute([$stat->success, $stat->total, $stat->strCode, $stat->ownerUsername]);
+        $stmt = $this->db->prepare("UPDATE stat SET success = ?, total = ? WHERE str_code = ? AND user_id = ?");
+        return $stmt->execute([$stat->success, $stat->total, $stat->strCode, $stat->userId]);
     }
 }

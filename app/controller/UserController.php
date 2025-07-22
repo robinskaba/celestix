@@ -48,7 +48,6 @@ class UserController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = strtolower(trim($_POST['username'] ?? ''));
             $email = trim($_POST['email'] ?? '');
-            $profile_img = $_POST["profile-img"] ?? NULL;
             $password = $_POST['password'] ?? '';
             $passwordCheck = $_POST['password-check'] ?? '';
 
@@ -100,14 +99,12 @@ class UserController {
             $noErrors = FormValidator::isValid($errors);
 
             if ($noErrors) {
-                $imgFileName = null;
+                $profilePictureFile = null;
                 if (isset($_FILES["profile-img"]) && $_FILES["profile-img"]["error"] !== UPLOAD_ERR_NO_FILE) {
-                    $ext = pathinfo($_FILES["profile-img"]["name"], PATHINFO_EXTENSION);
-                    $imgFileName = uniqid() . '.' . $ext;
-                    $imgPath = __DIR__ . '/../../public/uploads/profile_imgs/' . $imgFileName;
-                    move_uploaded_file($_FILES["profile-img"]["tmp_name"], $imgPath);
+                    $profilePictureFile = $_FILES["profile-img"];
                 }
-                $userService->registerUser($username, $email, $password, $imgFileName);
+                
+                $userService->registerUser($username, $email, $password, $profilePictureFile);
 
                 $sessionService = new SessionService();
                 $sessionService->login($username);
@@ -177,9 +174,6 @@ class UserController {
         $scripts = [
         ];
 
-        $profile_img_path = $targetUser->profileImg
-            ? "/uploads/profile_imgs/" . $targetUser->profileImg
-            : "/assets/img/nophoto.jpg";
         $ownsProfile = SessionService::isLoggedIn() && (SessionService::getUser()->username == $targetUsername);
         $stats = [];
         foreach ($targetUser->stats as $stat) {

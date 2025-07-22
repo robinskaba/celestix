@@ -5,23 +5,28 @@ namespace app\service;
 use app\model\User;
 use app\dao\UserDAO;
 use app\model\Stat;
+use app\service\PictureService;
 
 class UserService {
+    private PictureService $pictureService;
     private UserDAO $userDAO;
 
     public function __construct() {
         $this->userDAO = new UserDao();
+        $this->pictureService = new PictureService();
     }
 
-    public function registerUser(string $username, string $email, string $password, ?string $profileImg = null) {
+    public function registerUser(string $username, string $email, string $password, ?array $profilePictureFile = null) {
         $username = strtolower($username);
 
         if ($this->userDAO->findByUsername($username) !== null) {
-            return false; // uživatel existuje
+            return false;
         }
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-        $this->userDAO->create($username, $email, $profileImg, $passwordHash);
+        $profilePictureId = $profilePictureFile != null ? $this->pictureService->savePictureFromUpload($profilePictureFile) : null;
+
+        $this->userDAO->create($username, $email, $profilePictureId, $passwordHash);
     }
 
     public function getUserByUsername(string $username): ?User {

@@ -1,6 +1,0 @@
-# compose.prod.yaml
-services:
-  webserver:
-    volumes: []
-  db:
-    ports: []

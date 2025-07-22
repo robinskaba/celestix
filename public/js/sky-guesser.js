@@ -48,8 +48,8 @@ function showLoading(isLoading) {
 function setFieldsToCurrent() {
     guessField.value = "";
     solutionSpan.textContent = constellationName;
-    cleanImage.src = clean;
-    linesImage.src = lines;
+    cleanImage.src = "/resources/image?id=" + clean;
+    linesImage.src = "/resources/image?id=" + lines;
 
     guessField.focus();
 }

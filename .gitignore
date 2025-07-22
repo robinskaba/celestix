@@ -1,15 +1,5 @@
-sql/*.backup
-db-init/
 devtools/
-.env
+.env*
 working-files/
 */uploads/profile_imgs/*
 !*/uploads/profile_imgs/.gitkeep
-
-# ignore all header images except their folder (too large files)
-public/assets/img/constellation-headers/*
-!public/assets/img/constellation-headers/.gitkeep
-
-# ignore all guess images except their folder (too large files)
-public/assets/img/guess/*/*
-!public/assets/img/guess/*/.gitkeep

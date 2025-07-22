@@ -6,6 +6,7 @@ require __DIR__ . "/../app/controller/UserController.php";
 require __DIR__ . "/../app/controller/ConstellationController.php";
 require __DIR__ . "/../app/controller/ApiController.php";
 require __DIR__ . "/../app/controller/SkyGuessController.php";
+require __DIR__ . "/../app/controller/ResourceController.php";
 
 spl_autoload_register(function ($class) {
     $path = __DIR__ . '/../' . str_replace('\\', '/', $class) . '.php';
@@ -37,5 +38,7 @@ $router->get('/api/increase-stat', [ApiController::class, 'increaseStat']);
 $router->get('/sky-guess', [SkyGuessController::class, 'skyGuessPage']);
 $router->get('/api/fetch-constellation-img-pair', [SkyGuessController::class, 'fetchConstellationImgPair']);
 $router->get('/api/validate-sky-guess', [SkyGuessController::class, 'validateResult']);
+
+$router->get('/resources/image', [ResourceController::class, 'serveImage']);
 
 $router->dispatch();

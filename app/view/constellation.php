@@ -1,4 +1,4 @@
-<img src=<?= $constellation["headerImg"] ?> alt=<?= "{$constellation["name"]} header img" ?>>
+<img src=<?= $constellation["headerPictureSrc"] ?> alt=<?= "{$constellation["name"]} header img" ?>>
 <div id="desc">
     <h1><?= $constellation["name"] ?></h1>
     <span>Main star: <?= $constellation["mainStar"] ?></span>

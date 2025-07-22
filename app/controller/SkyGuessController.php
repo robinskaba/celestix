@@ -29,22 +29,22 @@ class SkyGuessController {
         }
 
         $constellationService = new ConstellationService();
+
         $constellations = $constellationService->getAll();
-        if (empty($constellations)) {
-            http_response_code(404);
-            echo json_encode(['error' => 'No constellations found.']);
+        $constellation = $constellations[array_rand($constellations)];
+        $pair = $constellationService->getGuessPairForConstellation($constellation);
+
+        if ($pair == null) {
+            http_response_code(500);
+            echo json_encode(["error" => "Server encountered unexpected error."]);
             exit;
         }
 
-        $constellation = $constellations[array_rand($constellations)];
-        $pair = $constellation->getGuessPair();
-
         header('Content-Type: application/json');
-
         $data = [
             "name"=>$constellation->name,
-            "clean"=>$pair["clean"],
-            "lines"=>$pair["lines"]
+            "clean"=>$pair->cleanPictureId,
+            "lines"=>$pair->linesPictureId
         ];
 
         SessionService::setField("sky-guess-solution", $constellation->name);

@@ -7,14 +7,14 @@ class Stat {
     public string $name;
     public int $success;
     public int $total;
-    public string $ownerUsername;
+    public int $userId;
 
-    public function __construct(string $strCode, string $name, int $success, int $total, string $ownerUsername) {
+    public function __construct(string $strCode, string $name, int $success, int $total, int $userId) {
         $this->strCode = $strCode;
         $this->name = $name;
         $this->success = $success;
         $this->total = $total;
-        $this->ownerUsername = $ownerUsername;
+        $this->userId = $userId;
     }
 
     public function getRatio(): int {
