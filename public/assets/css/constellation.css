@@ -7,26 +7,27 @@ main {
 #desc {
     display: flex;
     flex-direction: column;
-    gap: 0.25em;
+    gap: 0.5em;
     margin-bottom: 1em;
 }
 
 main h1 {
-    font-size: 400%;
+    font-size: 300%;
 }
 
 #desc span {
-    font-size: 150%;
+    font-size: 125%;
 }
 
 main > img {
-    width: 50%;
+    width: 40%;
     object-fit: contain;
     float: right;
-    margin: 0 0 1em 1em;
+    margin: 0 0 1em 2em;
 }
 
 main p {
     margin: 0;
     text-align: justify;
+    line-height: 1.3;
 }

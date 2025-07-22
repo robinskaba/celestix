@@ -7,6 +7,10 @@ footer {
     gap: 0.5em;
 }
 
+footer * {
+    font-family: var(--primary-font-family);
+}
+
 #links {
     display: flex;
     flex-direction: row;

@@ -13,6 +13,7 @@ nav {
 
 nav * {
     align-items: center;
+    font-family: var(--primary-font-family);
 }
 
 nav > div {

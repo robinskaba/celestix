@@ -17,3 +17,7 @@ main h1 {
     font-weight: 100;
     font-size: 400%;
 }
+
+main span {
+    font-style: italic;
+}
