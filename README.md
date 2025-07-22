@@ -8,7 +8,6 @@ Celestix is a website for learning about constellations. It includes:
 ## Technologies
 - frontend: HTML, CSS, JS
 - backend: PHP, PostgreSQL database
-- deployment: docker + docker-compose
-
+- deployment: docker
 ## Credits
  - night sky images come from [Stellarium](https://stellarium.org/)
