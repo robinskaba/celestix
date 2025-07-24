@@ -17,12 +17,20 @@ class PictureDAO extends BaseDAO {
         return $picture;
     }
 
-    public function savePictureBinary(string $imageData, string $mimeType): ?int {
+    public function savePicture(string $imageData, string $mimeType): ?int {
         $stmt = $this->db->prepare("INSERT INTO picture (data, mime_type) VALUES (?, ?) RETURNING id");
         $stmt->bindParam(1, $imageData, PDO::PARAM_LOB);
         $stmt->bindParam(2, $mimeType);
         $stmt->execute();
 
         return $stmt->fetchColumn();
+    }
+
+    public function overwritePicture(int $id, string $imageData, string $mimeType) {
+        $stmt = $this->db->prepare("UPDATE picture SET data = ?, mime_type = ? WHERE id = ?");
+        $stmt->bindParam(1, $imageData, PDO::PARAM_LOB);
+        $stmt->bindParam(2, $mimeType);
+        $stmt->bindParam(3, $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 }

@@ -19,4 +19,11 @@ class SkyGuessPairDAO extends BaseDAO {
         return $results;
     }
 
+    public function addPairToConstellationById(int $constellationId, $cleanPictureId, $linesPictureId): ?int {
+        $stmt = $this->db->prepare("INSERT INTO sky_guess_pair (constellation_id, clean_picture_id, lines_picture_id) VALUES (?, ?, ?)");
+        if ($stmt->execute([$constellationId, $cleanPictureId, $linesPictureId])) {
+            return (int)$this->db->lastInsertId();
+        }
+        return null;
+    }
 }

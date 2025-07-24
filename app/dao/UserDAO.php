@@ -30,7 +30,7 @@ class UserDAO extends BaseDAO {
             return null;
         }
 
-        $stmt = $this->db->prepare("SELECT id, username, email, profile_picture_id, password_hash FROM site_user WHERE $field = ?");
+        $stmt = $this->db->prepare("SELECT id, username, email, profile_picture_id, password_hash, privilege FROM site_user WHERE $field = ?");
         $stmt->execute([$value]);
         $row = $stmt->fetch(\PDO::FETCH_ASSOC);
         if (!$row) return null;
@@ -48,7 +48,7 @@ class UserDAO extends BaseDAO {
             $stats[$code] = new Stat($code, $actualName, $statRow["success"], $statRow["total"], $statRow["user_id"]);
         }
 
-        return new User($row['id'], $row['username'], $row['email'], $row['profile_picture_id'], $row["password_hash"], $stats);
+        return new User($row['id'], $row['username'], $row['email'], $row['profile_picture_id'], $row["password_hash"], $row["privilege"], $stats);
     }
 
     public function create(string $username, string $email, ?int $profilePictureId, string $passwordHash) {

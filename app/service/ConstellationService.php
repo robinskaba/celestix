@@ -27,6 +27,14 @@ class ConstellationService {
         return $this->constellationDAO->getConstellationByName($formattedName);
     }
 
+    public function getConstellationFromId(int $id): ?Constellation {
+        return $this->constellationDAO->getConstellationById($id);
+    }
+
+    public function getAllGuessPairsForConstellation(Constellation $constellation): array {
+        return $this->skyGuessPairDAO->getAllPairsByConstellationId($constellation->id);
+    }
+
     public function getGuessPairForConstellation(Constellation $constellation): ?SkyGuessPair {
         $allPairs = $this->skyGuessPairDAO->getAllPairsByConstellationId($constellation->id);
         if ($allPairs == null || empty($allPairs)) {
@@ -34,5 +42,13 @@ class ConstellationService {
         }
 
         return $allPairs[array_rand($allPairs)];
+    }
+
+    public function addGuessPairToConstellation(Constellation $constellation, int $cleanPictureId, int $linesPictureId): ?int {
+        return $this->skyGuessPairDAO->addPairToConstellationById($constellation->id, $cleanPictureId, $linesPictureId);
+    }
+
+    public function updateConstellation(Constellation $constellation) {
+        $this->constellationDAO->updateConstellation($constellation);
     }
 }

@@ -11,16 +11,16 @@ $username = $loggedIn ? SessionService::getUser()->username : "";
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title><?= htmlspecialchars($title) ?? 'Celestix' ?></title>
-
-        <?php foreach ($css ?? [] as $href): ?>
-            <link rel="stylesheet" href="<?= $href ?>">
-        <?php endforeach; ?>
+        <title><?= htmlspecialchars($title ?? 'Celestix') ?></title>
 
         <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/assets/css/shared.css">
         <link rel="stylesheet" href="/assets/css/header.css">
         <link rel="stylesheet" href="/assets/css/footer.css">
+
+        <?php foreach ($css ?? [] as $href): ?>
+            <link rel="stylesheet" href="<?= $href ?>">
+        <?php endforeach; ?>
 
         <?php foreach ($scripts ?? [] as $script): ?>
             <script 

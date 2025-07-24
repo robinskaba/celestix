@@ -10,8 +10,10 @@ class ConstellationController {
 
     private function formatConstellation(Constellation $constellation): array {
         return [
+            "id" => $constellation->id,
             "name" => $constellation->name,
             "lowercaseName" => $constellation->getLowerCaseName(),
+            "about" => $constellation->about,
             "story" => $constellation->story,
             "mainStar" => $constellation->mainStar,
             "hemisphere" => $constellation->hemisphere,
@@ -71,8 +73,8 @@ class ConstellationController {
     public function constellation() {
         $constellationService = new ConstellationService();
 
-        $lowercaseName = $_GET["name"] ?? '';
-        $objConst = $constellationService->getConstellation($lowercaseName);
+        $id = $_GET["id"] ?? '';
+        $objConst = $constellationService->getConstellationFromId($id);
 
         if ($objConst == null) {
             header("Location: /not-found");
@@ -85,6 +87,9 @@ class ConstellationController {
         $scripts = [];
 
         $constellation = $this->formatConstellation($objConst);
+
+        $user = SessionService::getUser();
+        $isAdmin = $user ? $user->isAdmin() : false; 
 
         require __DIR__ . '/../template.php';
     }

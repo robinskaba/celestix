@@ -20,6 +20,13 @@ class PictureService {
         $imageData = file_get_contents($file["tmp_name"]);
         $mimeType = $file["type"];
 
-        return $this->pictureDAO->savePictureBinary($imageData, $mimeType);
+        return $this->pictureDAO->savePicture($imageData, $mimeType);
+    }
+
+    public function overwritePictureWithUpload(int $id, array $file) {
+        $imageData = file_get_contents($file["tmp_name"]);
+        $mimeType = $file["type"];
+
+        return $this->pictureDAO->overwritePicture($id, $imageData, $mimeType);
     }
 }

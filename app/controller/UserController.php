@@ -69,30 +69,13 @@ class UserController {
             }
 
             // email checks
-            $errors["email"] = [];
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors["email"][] = "Invalid email format.";
-            }
-            if (empty($email)) {
-                $errors["email"][] = "Email is required.";
-            }
+            $errors["email"] = FormValidator::validateEmail($email);
             if($userService->emailExists($email)) {
                 $errors["email"][] = "Email already exists.";
             }
 
-            // profile img checks
-            $errors["profile-img"] = [];
-            if (isset($_FILES["profile-img"]) && $_FILES["profile-img"]["error"] !== UPLOAD_ERR_NO_FILE) {
-                $file = $_FILES["profile-img"];
-
-                if ($file["error"] === UPLOAD_ERR_INI_SIZE || $file["error"] === UPLOAD_ERR_FORM_SIZE) {
-                    $errors["profile-img"][] = "Image is too large (server limit exceeded).";
-                } elseif ($file["error"] !== UPLOAD_ERR_OK) {
-                    $errors["profile-img"][] = "Upload failed (error code: {$file["error"]}).";
-                } elseif ($file["size"] > 2 * 1024 * 1024) {
-                    $errors["profile-img"][] = "Profile image size must be less than 2MB.";
-                }
-            }
+            // validating profile picture
+            $errors["profile-img"] = FormValidator::validateImageUpload($_FILES["profile-img"], 2);
 
             // validating passwords
             $errors["password"] = PasswordValidator::validatePassword($password);
@@ -124,8 +107,7 @@ class UserController {
         $title = 'Change password | Celestix';
         $view = 'change-password';
         $css = ['/assets/css/form.css'];
-        $scripts = [
-        ];
+        $scripts = [];
 
         $errors = [];
 

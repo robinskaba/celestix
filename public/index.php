@@ -16,6 +16,7 @@ use app\controller\ConstellationController;
 use app\controller\ApiController;
 use app\controller\SkyGuessController;
 use app\controller\ResourceController;
+use app\controller\AdminController;
 
 $router = new Router();
 
@@ -40,5 +41,7 @@ $router->get('/api/fetch-constellation-img-pair', [SkyGuessController::class, 'f
 $router->get('/api/validate-sky-guess', [SkyGuessController::class, 'validateResult']);
 
 $router->get('/resources/image', [ResourceController::class, 'serveImage']);
+
+$router->get('/update-constellation', [AdminController::class, 'updateConstellation']);
 
 $router->dispatch();

@@ -32,11 +32,16 @@ form {
     align-items: center;
 }
 
-input {
+label {
+    font-size: 125%;
+}
+
+input, textarea, select {
     background-color: black;
     border: solid white 1px;
     border-radius: var(--border-radius);
     padding: 0.5em;
+    font-size: 100%;
     margin-top: 0.5em;
 }
 
@@ -59,3 +64,4 @@ form button {
     font-size: 75%;
     margin: 0;
 }
+

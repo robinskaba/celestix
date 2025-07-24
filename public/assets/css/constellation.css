@@ -1,7 +1,6 @@
 main {
     margin-top: 6.5em;
-
-    padding: 2em 10em;
+    padding: 2em 15em;
 }
 
 #desc {
@@ -16,18 +15,30 @@ main h1 {
 }
 
 #desc span {
-    font-size: 125%;
+    font-size: 100%;
 }
 
 main > img {
     width: 40%;
     object-fit: contain;
     float: right;
-    margin: 0 0 1em 2em;
+    margin: 0 0 0.5em 1em;
 }
 
 main p {
     margin: 0;
     text-align: justify;
     line-height: 1.3;
+}
+
+h2 {
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+#edit-btn {
+    margin-top: 1em;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
 }

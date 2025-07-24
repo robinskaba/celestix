@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS stat (
 CREATE TABLE IF NOT EXISTS constellation (
     id SERIAL PRIMARY KEY,
     "name" TEXT UNIQUE NOT NULL,
+    about TEXT,
     story TEXT,
     main_star TEXT,
     hemisphere TEXT CHECK (hemisphere IN ('northern', 'southern', 'equatorial')),
