@@ -1,7 +1,7 @@
 <div class="vflex">
     <div id="info">
         <h1><?= htmlspecialchars($targetUsername) ?></h1>
-        <img class=<?= $targetUser->profilePictureId == null ? "hidden" : "" ?> src=<?= "/resources/image?id=".$targetUser->profilePictureId ?> alt=<?= htmlspecialchars($targetUsername)." profile picture" ?>>
+        <img class="<?= $targetUser->profilePictureId == null ? "hidden" : "" ?>" src=<?= "/resources/image?id=".$targetUser->profilePictureId ?> alt=<?= htmlspecialchars($targetUsername)." profile picture" ?>>
     </div>
 
     <?php if ($ownsProfile): ?>
