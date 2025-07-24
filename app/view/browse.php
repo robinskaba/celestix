@@ -10,7 +10,6 @@
             </div>
             <div>
                 <p><?= $constellation["about"] ?></p>
-                <img src=<?= $constellation["headerPictureSrc"] ?> alt=<?= "{$constellation["name"]} header image" ?>>
             </div>
         </a>
     <?php endforeach; ?>

@@ -17,8 +17,7 @@ class ConstellationController {
             "story" => $constellation->story,
             "mainStar" => $constellation->mainStar,
             "hemisphere" => $constellation->hemisphere,
-            "symbolism" => $constellation->symbolism,
-            "headerPictureSrc" => "/resources/image?id=".$constellation->headerPictureId
+            "symbolism" => $constellation->symbolism
         ];
     }
 
