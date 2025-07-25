@@ -17,7 +17,8 @@ class ConstellationController {
             "story" => $constellation->story,
             "mainStar" => $constellation->mainStar,
             "hemisphere" => $constellation->hemisphere,
-            "symbolism" => $constellation->symbolism
+            "symbolism" => $constellation->symbolism,
+            "headerPictureSrc" => "/resources/image?id={$constellation->headerPictureId}&width=200"
         ];
     }
 
@@ -64,7 +65,19 @@ class ConstellationController {
         $css = ['/assets/css/browse.css'];
         $scripts = [];
 
-        $constellations = $this->formatConstellations();
+        $page = isset($_GET["page"]) ? max(1, (int)$_GET["page"]) : 1;
+        $perPage = 9;
+
+        $allConstellations = $this->formatConstellations();
+        $totalConstellations = count($allConstellations);
+        $totalPages = (int)ceil($totalConstellations / $perPage);
+
+        if ($page > $totalPages) {
+            $page = $totalPages;
+        }
+
+        $offset = ($page - 1) * $perPage;
+        $constellations = array_slice($allConstellations, $offset, $perPage);
 
         require __DIR__ . '/../template.php';
     }

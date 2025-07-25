@@ -10,7 +10,24 @@
             </div>
             <div>
                 <p><?= $constellation["about"] ?></p>
+                <img src=<?= $constellation["headerPictureSrc"] ?> alt=<?= "{$constellation["name"]} header image" ?>>
             </div>
         </a>
     <?php endforeach; ?>
 </ul>
+<div id="paging">
+    <?php if ($page > 1): ?>
+        <a href="?page=<?= $page - 1 ?>">&lt;</a>
+    <?php endif; ?>
+
+    <?php
+    $start = max(1, $page - 2);
+    $end = min($totalPages, $page + 2);
+    for ($i = $start; $i <= $end; $i++): ?>
+        <a href="?page=<?= $i ?>"<?= $i === $page ? ' class="selected"' : '' ?>><?= $i ?></a>
+    <?php endfor; ?>
+
+    <?php if ($page < $totalPages): ?>
+        <a href="?page=<?= $page + 1 ?>">&gt;</a>
+    <?php endif; ?>
+</div>

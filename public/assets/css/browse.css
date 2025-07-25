@@ -76,3 +76,25 @@ ul a div img {
     max-width: 50%;
     object-fit: contain;
 }
+
+#paging {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+
+#paging a {
+    text-decoration: none;
+    font-size: 100%;
+    color: gray;
+}
+
+#paging a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+#paging a.selected {
+    color: white;
+}
