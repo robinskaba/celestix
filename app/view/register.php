@@ -14,8 +14,9 @@ require __DIR__ . '/util/form_errors.php';
 
     <label>
         Profile picture
-        <input type="file" class="btn" name="profile-img">
+        <input type="file" class="btn" name="profile-img" disabled>
     </label>
+    <span>* disabled to save memory</span>
     <?php displayErrors($errors, "profile-img"); ?>
 
     <label>
